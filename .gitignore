@@ -1,0 +1,11 @@
+#packages folder
+/node_modules
+
+#enviroment variable files
+.env
+
+#swap files 
+*.swp
+*.swo
+*.swn
+
