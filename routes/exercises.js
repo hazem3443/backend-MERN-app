@@ -1,9 +1,10 @@
 const router = require("express").Router();
 let Exercise = require("../models/exercise.model");
+{
 /**
- * @api {GET} /exercises get all exercises
+ * @api {GET} /exercises 1.Get all exercises
  * @apiName GetExercises
- * @apiGroup Exercises
+ * @apiGroup 2. Exercises
  * @apiVersion  0.0.1
  *
  * @apiSuccess (200) {String-Hash} _id collection id
@@ -26,15 +27,17 @@ let Exercise = require("../models/exercise.model");
  *        "__v": 0
  *        }
  */
+}
 router.route("/").get((req, res) => {
   Exercise.find()
     .then((exercises) => res.json(exercises))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+{
 /**
- * @api {POST} /exercises/add add new exercise
+ * @api {POST} /exercises/add 3.Add new exercise
  * @apiName AddExercise
- * @apiGroup Exercises
+ * @apiGroup 2. Exercises
  * @apiVersion  0.0.1
  *
  * @apiParam  {String} username description
@@ -54,6 +57,7 @@ router.route("/").get((req, res) => {
  * @apiSuccessExample {String} Success-Response:
  * Exercise added!
  */
+}
 router.route("/add").post((req, res) => {
   const username = req.body.username;
   const description = req.body.description;
@@ -72,10 +76,11 @@ router.route("/add").post((req, res) => {
     .then(() => res.json("Exercise added!"))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+{
 /**
- * @api {GET} /exercises/:id Select a specific exercise
+ * @api {GET} /exercises/:id 2.Select a specific exercise
  * @apiName SelectExercise
- * @apiGroup Exercises
+ * @apiGroup 2. Exercises
  * @apiVersion  0.0.1
  *
  * @apiSuccess (200) {String-Hash} _id collection id
@@ -98,31 +103,34 @@ router.route("/add").post((req, res) => {
  *     "__v": 0
  *     }
  */
+ }
 router.route("/:id").get((req, res) => {
   Exercise.findById(req.params.id)
     .then((exercise) => res.json(exercise))
     .catch((err) => res.status(400).json("Error: " + err));
 });
+{
 /**
  *
- * @api {DELETE} /exercises/:id Delete Exercise
+ * @api {DELETE} /exercises/:id 5.Delete Exercise
  * @apiName DeleteExercise
- * @apiGroup Exercises
+ * @apiGroup 2. Exercises
  * @apiVersion  0.0.1
  *
  * @apiSuccessExample {type} Success-Response:
  * Exercise deleted.
  */
+}
 router.route("/:id").delete((req, res) => {
   Exercise.findByIdAndDelete(req.params.id)
     .then(() => res.json("Exercise deleted."))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-
+{
 /**
- * @api {POST} /exercises/update/:id Update Exercise
+ * @api {POST} /exercises/update/:id 4.Update Exercise
  * @apiName UpdateExercise
- * @apiGroup Exercises
+ * @apiGroup 2. Exercises
  * @apiVersion  0.0.1
  *
  * @apiParam  {String} username description
@@ -141,6 +149,7 @@ router.route("/:id").delete((req, res) => {
  * @apiSuccessExample {String} Success-Response:
  * Exercise updated!
  */
+}
 router.route("/update/:id").post((req, res) => {
   Exercise.findById(req.params.id)
     .then((exercise) => {

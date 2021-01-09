@@ -56,3 +56,8 @@ Format: method + path (e.g. Get + User)
 
 for more info about **apidocs params** you can [check here](https://apidocjs.com/#params)
 
+then you can run command 
+```console
+$ apidoc -e "(node_modules)" -i ./routes -o ./public/apidoc
+```
+this will except **node_modules** directory from building documentation process and generate docs for **routes** folder and put the static files generated into **/public/apidoc**

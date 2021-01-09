@@ -1,10 +1,107 @@
 define({ "api": [
   {
+    "type": "post",
+    "url": "/users/add",
+    "title": "2.Add new User",
+    "name": "AddUser",
+    "group": "1._User",
+    "version": "0.0.1",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username string</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example:",
+          "content": "{\n    \"username\" : name String\n}",
+          "type": "string"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "status : user added",
+          "type": "type"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "Error: string",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/users.js",
+    "groupTitle": "1._User"
+  },
+  {
+    "type": "get",
+    "url": "/users",
+    "title": "1.Request Users Data",
+    "name": "GetUsers",
+    "group": "1._User",
+    "version": "0.0.1",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username of the User.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n    \"_id\": \"5ff4fd4ed2ecbe46af083ffe\",\n    \"username\": \"hazem\",\n    \"createdAt\": \"2021-01-05T23:59:10.600Z\",\n    \"updatedAt\": \"2021-01-05T23:59:10.600Z\",\n    \"__v\": 0\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "UserNotFound",
+            "description": "<p>The id of the User was not found.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n\nError: string",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/users.js",
+    "groupTitle": "1._User"
+  },
+  {
     "type": "POST",
     "url": "/exercises/add",
-    "title": "add new exercise",
+    "title": "3.Add new exercise",
     "name": "AddExercise",
-    "group": "Exercises",
+    "group": "2._Exercises",
     "version": "0.0.1",
     "parameter": {
       "fields": {
@@ -57,14 +154,14 @@ define({ "api": [
       ]
     },
     "filename": "routes/exercises.js",
-    "groupTitle": "Exercises"
+    "groupTitle": "2._Exercises"
   },
   {
     "type": "DELETE",
     "url": "/exercises/:id",
-    "title": "Delete Exercise",
+    "title": "5.Delete Exercise",
     "name": "DeleteExercise",
-    "group": "Exercises",
+    "group": "2._Exercises",
     "version": "0.0.1",
     "success": {
       "examples": [
@@ -76,14 +173,14 @@ define({ "api": [
       ]
     },
     "filename": "routes/exercises.js",
-    "groupTitle": "Exercises"
+    "groupTitle": "2._Exercises"
   },
   {
     "type": "GET",
     "url": "/exercises",
-    "title": "get all exercises",
+    "title": "1.Get all exercises",
     "name": "GetExercises",
-    "group": "Exercises",
+    "group": "2._Exercises",
     "version": "0.0.1",
     "success": {
       "fields": {
@@ -148,14 +245,14 @@ define({ "api": [
       ]
     },
     "filename": "routes/exercises.js",
-    "groupTitle": "Exercises"
+    "groupTitle": "2._Exercises"
   },
   {
     "type": "GET",
     "url": "/exercises/:id",
-    "title": "Select a specific exercise",
+    "title": "2.Select a specific exercise",
     "name": "SelectExercise",
-    "group": "Exercises",
+    "group": "2._Exercises",
     "version": "0.0.1",
     "success": {
       "fields": {
@@ -220,14 +317,14 @@ define({ "api": [
       ]
     },
     "filename": "routes/exercises.js",
-    "groupTitle": "Exercises"
+    "groupTitle": "2._Exercises"
   },
   {
     "type": "POST",
     "url": "/exercises/update/:id",
-    "title": "Update Exercise",
+    "title": "4.Update Exercise",
     "name": "UpdateExercise",
-    "group": "Exercises",
+    "group": "2._Exercises",
     "version": "0.0.1",
     "parameter": {
       "fields": {
@@ -280,103 +377,6 @@ define({ "api": [
       ]
     },
     "filename": "routes/exercises.js",
-    "groupTitle": "Exercises"
-  },
-  {
-    "type": "post",
-    "url": "/users/add",
-    "title": "add new User",
-    "name": "AddUser",
-    "group": "User",
-    "version": "0.0.1",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "username",
-            "description": "<p>username string</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Example:",
-          "content": "{\n    \"username\" : name String\n}",
-          "type": "string"
-        }
-      ]
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "status : user added",
-          "type": "type"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "Error: string",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "routes/users.js",
-    "groupTitle": "User"
-  },
-  {
-    "type": "get",
-    "url": "/users",
-    "title": "Request Users information",
-    "name": "GetUsers",
-    "group": "User",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "String",
-            "optional": false,
-            "field": "username",
-            "description": "<p>username of the User.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    \"_id\": \"5ff4fd4ed2ecbe46af083ffe\",\n    \"username\": \"hazem\",\n    \"createdAt\": \"2021-01-05T23:59:10.600Z\",\n    \"updatedAt\": \"2021-01-05T23:59:10.600Z\",\n    \"__v\": 0\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "UserNotFound",
-            "description": "<p>The id of the User was not found.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Error-Response:",
-          "content": "HTTP/1.1 404 Not Found\n\nError: string",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "routes/users.js",
-    "groupTitle": "User"
+    "groupTitle": "2._Exercises"
   }
 ] });

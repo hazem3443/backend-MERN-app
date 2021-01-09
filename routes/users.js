@@ -1,10 +1,12 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
-
+{
 /**
- * @api {get} /users Request Users information
+ * @api {get} /users 1.Request Users Data
  * @apiName GetUsers
- * @apiGroup User
+ * @apiGroup 1. User
+ *
+ * @apiVersion  0.0.1
  *
  * @apiSuccess {String} username  username of the User.
  *
@@ -24,16 +26,19 @@ let User = require('../models/user.model');
  *     
  *     Error: string
  */
+}
+
 router.route('/').get((req, res) => {
   User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-
+{
 /**
- * @api {post} /users/add add new User
+ * @api {post} /users/add 2.Add new User
  * @apiName AddUser
- * @apiGroup User
+ * @apiGroup 1. User
+ * 
  * @apiVersion  0.0.1
  * 
  * @apiParam  {String} username username string
@@ -48,6 +53,7 @@ router.route('/').get((req, res) => {
  * @apiErrorExample Error-Response:
  * Error: string
  */
+ }
 
 router.route('/add').post((req, res) => {
   const username = req.body.username;
