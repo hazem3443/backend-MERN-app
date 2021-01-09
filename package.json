@@ -88,5 +88,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "grunt-apidoc": "^0.11.0"
+  }
 }

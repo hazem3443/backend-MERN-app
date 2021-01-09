@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
+const router = require('express').Router();
+
+
 require('dotenv').config();
 
 const app = express();
@@ -23,6 +26,12 @@ const usersRouter = require('./routes/users');
 
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
+
+app.use(express.static('public'));
+
+// app.use('/apidoc', (req, res) => { res.render('./apidoc/index.html') });
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
