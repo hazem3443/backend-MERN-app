@@ -6,12 +6,7 @@ let User = require('../models/user.model');
  * @apiName GetUsers
  * @apiGroup User
  *
- *
- * @apiSuccess {String-Hash} id id of the user.
  * @apiSuccess {String} username  username of the User.
- * @apiSuccess {Date} CreatedAt  Created date of the User.
- * @apiSuccess {Date} UpdatedAt  Updated date of the User.
- * @apiSuccess {Number} __v  version of the user model.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -22,14 +17,12 @@ let User = require('../models/user.model');
  *         "updatedAt": "2021-01-05T23:59:10.600Z",
  *         "__v": 0
  *     }     
- *
  * @apiError UserNotFound The id of the User was not found.
  *
  * @apiErrorExample Error-Response:
  *     HTTP/1.1 404 Not Found
  *     
  *     Error: string
- *     
  */
 router.route('/').get((req, res) => {
   User.find()
@@ -38,30 +31,22 @@ router.route('/').get((req, res) => {
 });
 
 /**
- * 
  * @api {post} /users/add add new User
  * @apiName AddUser
  * @apiGroup User
  * @apiVersion  0.0.1
  * 
- * 
  * @apiParam  {String} username username string
- * 
  * 
  * @apiParamExample  {string} Example:
  * {
  *     "username" : name String
  * }
- * 
- * 
  * @apiSuccessExample {type} Success-Response:
- * 
  * status : user added
  * 
  * @apiErrorExample Error-Response:
- *     
  * Error: string
- * 
  */
 
 router.route('/add').post((req, res) => {
